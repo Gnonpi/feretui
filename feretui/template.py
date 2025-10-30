@@ -889,9 +889,9 @@ class Template:
         :type po: PoFile_
         """
 
-        def callback(name: str) -> Callable:
+        def callback(xname: str) -> Callable[[str, str], None]:
             def _callback(text: str, suffix: str = "") -> None:
-                context = f"template:{name}"
+                context = f"template:{xname}"
                 if suffix:
                     context += ":" + suffix
 

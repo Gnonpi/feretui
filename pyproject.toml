@@ -122,6 +122,9 @@ exclude_lines = [
 addopts = "--cov=feretui --cov-report=term-missing --cov-fail-under=100"
 
 [tool.basedpyright]
+include = [
+    "feretui/templates/*",
+]
 exclude = [
     "feretui/tests/*",
     "feretui/resources/tests/*",
@@ -129,3 +132,5 @@ exclude = [
 failOnWarnings = false
 # many re-imports in feretui/__init__.py
 reportUnusedImport = false
+# hidden behind TYPING_CHECK blocks
+reportImportCycles = false
