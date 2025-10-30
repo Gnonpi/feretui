@@ -296,7 +296,7 @@ class FeretUI:
         self: "FeretUI",
         base_url: str = "/feretui",
         title: str = "FeretUI",
-    ) -> "FeretUI":
+    ):
         """FeretUI class.
 
         :param base_url: The prefix of the url for all internal api

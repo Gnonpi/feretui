@@ -59,7 +59,7 @@ class Response:
         body: str | None = "",
         status_code: int = 200,
         headers: dict[str, str] = None,
-    ) -> "Response":
+    ):
         """FeretUI response.
 
         :param body: [''], response return to the web-serving.

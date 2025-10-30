@@ -61,6 +61,7 @@ test = [
     'flake8-bandit',
     'pytest-snapshot',
     'webtest',
+    'basedpyright',
 ]
 bottle = ['bottle', 'BottleSessions']
 
@@ -119,3 +120,12 @@ exclude_lines = [
 
 [tool.pytest.ini_options]
 addopts = "--cov=feretui --cov-report=term-missing --cov-fail-under=100"
+
+[tool.basedpyright]
+exclude = [
+    "feretui/tests/*",
+    "feretui/resources/tests/*",
+]
+failOnWarnings = false
+# many re-imports in feretui/__init__.py
+reportUnusedImport = false

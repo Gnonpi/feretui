@@ -241,7 +241,7 @@ class XPathDescription:
         mult: bool = None,
         action: str = None,
         elements: list[html.HtmlElement] = None,
-    ) -> "Template":
+    ):
         """Xpath description object.
 
         :param expression: the xpath expression
@@ -285,7 +285,7 @@ class Template:
 
     """
 
-    def __init__(self: "Template", translation: Translation) -> "Template":
+    def __init__(self: "Template", translation: Translation):
         """Template class.
 
         :param translation: instance of the translation mechanism

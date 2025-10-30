@@ -81,7 +81,7 @@ class Session:
         lang: str = "en",
         theme: str = "default",
         **kwargs: dict,
-    ) -> "Session":
+    ):
         """FeretUI session."""
         self.user: str = user
         self.lang: str = lang

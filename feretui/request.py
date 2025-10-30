@@ -51,7 +51,7 @@ from feretui.session import Session
 class RequestMethod:
     """RequestMethod."""
 
-    def __init__(self: "RequestMethod", method: str) -> None:
+    def __init__(self: "RequestMethod", method: str):
         """RequestMethod Constructor."""
         self.method: str = method
 
@@ -105,7 +105,7 @@ class Request:
         params: MultiDict = None,
         querystring: str = None,
         headers: dict[str, str] = None,
-    ) -> "Request":
+    ):
         """Request object."""
         if headers is None:
             headers = {}

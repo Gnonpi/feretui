@@ -79,7 +79,7 @@ class TranslatedTemplate:
     def __init__(
         self: "TranslatedTemplate",
         addons: str = "feretui",
-    ) -> "TranslatedTemplate":
+    ):
         """TranslatedMessage class."""
         self.addons: str = addons
 
@@ -138,7 +138,7 @@ class TranslatedFileTemplate(TranslatedTemplate):
         self: "TranslatedFileTemplate",
         template_path: str,
         addons: str = "feretui",
-    ) -> "TranslatedFileTemplate":
+    ):
         """TranslatedFileTemplate class."""
         super().__init__(addons=addons)
         self.path: str = template_path
@@ -192,7 +192,7 @@ class TranslatedStringTemplate(TranslatedTemplate):
         self: "TranslatedStringTemplate",
         template: str,
         addons: str = "feretui",
-    ) -> "TranslatedStringTemplate":
+    ):
         """TranslatedStringTemplate class."""
         super().__init__(addons=addons)
         self.template: str = template
@@ -240,7 +240,7 @@ class TranslatedMenu:
         self: "TranslatedMenu",
         menu: Menu,
         addons: str = "feretui",
-    ) -> "TranslatedMenu":
+    ):
         """TranslatedMenu class."""
         if not isinstance(menu, Menu):
             raise TranslationMenuError(f"{menu} must be an instance of Menu")
@@ -307,7 +307,7 @@ class TranslatedForm:
         self: "TranslatedForm",
         form: FeretUIForm,
         addons: str = "feretui",
-    ) -> None:
+    ):
         """TranslatedForm class."""
         if not issubclass(form, FeretUIForm):
             raise TranslationFormError(f"{form} must be a sub class of FeretUI")
@@ -367,7 +367,7 @@ class TranslatedResource:
         self: "TranslatedResource",
         resource: Resource,
         addons: str = "feretui",
-    ) -> None:
+    ):
         """TranslatedForm class."""
         if not isinstance(resource, Resource):
             raise TranslationResourceError(
@@ -406,7 +406,7 @@ class Translation:
         The behaviour work with thread local
     """
 
-    def __init__(self: "Translation", feretui: "FeretUI") -> "Translation":
+    def __init__(self: "Translation", feretui: "FeretUI"):
         """Instance of the Translation class."""
         self.feretui = feretui
         self.langs: set = set()
