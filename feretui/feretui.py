@@ -444,20 +444,20 @@ class FeretUI:
             template = self.render_template(
                 request.session,
                 "feretui-client",
-                page=Markup.unescape(
+                page=Markup(
                     self.get_page(page)(
                         self,
                         request.session,
                         request.query,
-                    ),
-                ),
+                    )
+                ).unescape(),
             )
             # lxml remove the tags html, head and body. So in template
             # they are named feretui-html, feretui-head, feretui-body
             template = template.replace("feretui-html", "html")
             template = template.replace("feretui-head", "head")
             template = template.replace("feretui-body", "body")
-            return Response(f"<!DOCTYPE html5>\n{Markup.unescape(template)}")
+            return Response(f"<!DOCTYPE html5>\n{Markup(template).unescape()}")
 
     # ---------- statics  ----------
     def register_js(self: "FeretUI", name: str, filepath: str) -> None:

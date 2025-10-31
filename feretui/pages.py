@@ -67,8 +67,8 @@ def page_404(feretui: "FeretUI", session: Session, options: dict) -> str:
     if isinstance(page, list):
         page = page[0]
 
-    return Markup.unescape(
-        feretui.render_template(session, "feretui-page-404", page=page))
+    template = feretui.render_template(session, "feretui-page-404", page=page))
+    return Markup(template).unescape()
 
 
 def page_forbidden(

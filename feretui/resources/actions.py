@@ -153,7 +153,7 @@ class Action(ActionI18nMixin):
         :return: The html
         :rtype: Markup
         """
-        return Markup.unescape(
+        return Markup(
             feretui.render_template(
                 session,
                 self.template_id,
@@ -163,8 +163,8 @@ class Action(ActionI18nMixin):
                 icon=self.icon,
                 rcode=resource_code,
                 vcode=view_code,
-            ),
-        )
+            )
+        ).unescape()
 
     def is_visible(
         self: "Action",

@@ -74,7 +74,7 @@ def goto(
         )
     url = request.get_url_from_dict(base_url=base_url, querystring=options)
     return Response(
-        Markup.unescape(body),
+        Markup(body).unescape(),
         headers={
             "HX-Push-Url": url,
         },

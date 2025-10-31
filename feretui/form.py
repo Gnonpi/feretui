@@ -99,18 +99,17 @@ def wrap_input(
     c = kwargs.pop("class", "") or kwargs.pop("class_", "")
     kwargs["class"] = "{} {}".format(" ".join(input_class), c)
 
-    return Markup.unescape(
-        feretui.render_template(
-            session,
-            "feretui-input-field",
-            label=None if kwargs.pop("nolabel", False) else field.label,
-            widget=field.widget(field, **kwargs),
-            required=required,
-            readonly=readonly,
-            description=field.description,
-            errors=field.errors,
-        ),
+    template = feretui.render_template(
+        session,
+        "feretui-input-field",
+        label=None if kwargs.pop("nolabel", False) else field.label,
+        widget=field.widget(field, **kwargs),
+        required=required,
+        readonly=readonly,
+        description=field.description,
+        errors=field.errors,
     )
+    return Markup(template).unescape()
 
 
 def wrap_bool(
@@ -136,17 +135,16 @@ def wrap_bool(
         read_only(field)
         readonly = True
 
-    return Markup.unescape(
-        feretui.render_template(
-            session,
-            "feretui-bool-field",
-            label=None if kwargs.pop("nolabel", False) else field.label,
-            widget=field.widget(field, **kwargs),
-            readonly=readonly,
-            description=field.description,
-            errors=field.errors,
-        ),
+    template = feretui.render_template(
+        session,
+        "feretui-bool-field",
+        label=None if kwargs.pop("nolabel", False) else field.label,
+        widget=field.widget(field, **kwargs),
+        readonly=readonly,
+        description=field.description,
+        errors=field.errors,
     )
+    return Markup(template).unescape()
 
 
 def wrap_radio(
@@ -183,19 +181,18 @@ def wrap_radio(
         kwargs["disabled"] = True
         readonly = True
 
-    return Markup.unescape(
-        feretui.render_template(
-            session,
-            template_id,
-            label=None if kwargs.pop("nolabel", False) else field.label,
-            field=field,
-            required=required,
-            readonly=readonly,
-            options=kwargs,
-            description=field.description,
-            errors=field.errors,
-        ),
+    template = feretui.render_template(
+        session,
+        template_id,
+        label=None if kwargs.pop("nolabel", False) else field.label,
+        field=field,
+        required=required,
+        readonly=readonly,
+        options=kwargs,
+        description=field.description,
+        errors=field.errors,
     )
+    return Markup(template).unescape()
 
 
 def no_wrap(

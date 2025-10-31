@@ -270,17 +270,16 @@ class Menu(ContextProperties):
         :return: The html
         :rtype: str
         """
-        return Markup.unescape(
-            feretui.render_template(
-                session,
-                self.template_id,
-                label=self.get_label(feretui, session),
-                description=self.get_description(feretui, session),
-                icon=self.icon,
-                href=self.get_href(feretui, self.querystring),
-                url=self.get_url(feretui, self.querystring),
-            ),
+        template = feretui.render_template(
+            session,
+            self.template_id,
+            label=self.get_label(feretui, session),
+            description=self.get_description(feretui, session),
+            icon=self.icon,
+            href=self.get_href(feretui, self.querystring),
+            url=self.get_url(feretui, self.querystring),
         )
+        return Markup(template).unescape()
 
 
 class ChildrenMenu:
@@ -313,16 +312,15 @@ class ChildrenMenu:
         :return: The html
         :rtype: str
         """
-        return Markup.unescape(
-            feretui.render_template(
-                session,
-                self.template_id,
-                label=self.get_label(feretui, session),
-                description=self.get_description(feretui, session),
-                icon=self.icon,
-                children=self.children,
-            ),
+        template = feretui.render_template(
+            session,
+            self.template_id,
+            label=self.get_label(feretui, session),
+            description=self.get_description(feretui, session),
+            icon=self.icon,
+            children=self.children,
         )
+        return Markup(template).unescape()
 
     def is_visible(self: "Menu", session: Session) -> bool:  # noqa: ARG002
         """Return True if the menu can be rendering.
@@ -446,8 +444,7 @@ class ToolBarDividerMenu(ToolBarMenu):
         :return: The html
         :rtype: str
         """
-        return Markup.unescape(
-            feretui.render_template(session, self.template_id))
+        return Markup(feretui.render_template(session, self.template_id)).unescape()
 
 
 class ToolBarUrlMenu(UrlMenu, ToolBarMenu):
