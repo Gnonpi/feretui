@@ -1,5 +1,11 @@
 # Branche en mode brouillon
 
+Repo:
+https://github.com/Gnonpi/feretui/
+
+Branche:
+`feat/try-mypy`
+
 # Choix du linter
 
 Le choix "de base" c'est `mypy`.
@@ -47,12 +53,6 @@ Output:
  ('Type "None" is not assignable to declared type "str"\n', 21)]
 ```
 
-Le 3ème c'est ce dont je t'ai parlé:
-il faut utiliser `Markup(<template:str>).unescape()`.
-C'est appelé 40 fois avec la même erreur, 
-donc je pense surtout que `feretui.feretui.FeretUI.render_template`
-devrait faire cette conversion lui-même.
-
 Le 1er, `Expected type arguments for generic class "dict"`:
 c'est parce qu'il ne suffit pas de typer un `dict`,
 il faut bien remplir `dict[<key>, <value>]`.
@@ -61,6 +61,19 @@ et des dictionnaires d'options.
 Je pense que définir une fois un alias genre `type FeretPage = dict[str, <le-gros-callable>]`
 et le réutiliser là où il faut.
 Ça rendra le code plus lisible.
+
+Le 3ème c'est ce dont je t'ai parlé:
+il faut utiliser `Markup(<template:str>).unescape()`.
+C'est appelé 40 fois avec la même erreur, 
+donc je pense surtout que `feretui.feretui.FeretUI.render_template`
+devrait faire cette conversion lui-même.
+
+Le 4ème, c'est plein d'endroits où la signature est `<name>: str = None`
+alors qu'elle devrait être `<name>: str | None = None`.
+J'ai l'impression que la 5ème, 
+c'est la même, mais au niveau de la classe:
+si un attribut est déclaré comme `<attr_name>: str = None`,
+ça coince.
 
 Il y a pas mal d'erreurs évitables avec
 ```
